@@ -11,6 +11,6 @@ class ShapeTest {
         System.out.println(shapeTest.test(new Triangle()));
         System.out.println(shapeTest.test(new Star()));
         System.out.println(shapeTest.test(new Pentagon()));
-        System.out.println("result");
+
     }
 }
