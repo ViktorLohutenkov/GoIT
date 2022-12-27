@@ -1,3 +1,5 @@
+package GoIt_HomeWork_8;
+
 class ShapeTest {
     public String test(Shape shape){
         return shape.getName();

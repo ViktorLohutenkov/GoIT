@@ -1,6 +1,8 @@
+package GoIt_HomeWork_8;
+
 class Pentagon extends Shape{
     @Override
     public String getName() {
-        return "Pentagon";
+        return "GoIt_HomeWork_8.Pentagon";
     }
 }

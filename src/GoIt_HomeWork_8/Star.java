@@ -1,7 +1,9 @@
+package GoIt_HomeWork_8;
+
 class Star extends Shape {
     @Override
     public String getName() {
-        return "Star";
+        return "GoIt_HomeWork_8.Star";
 
     }
 }
