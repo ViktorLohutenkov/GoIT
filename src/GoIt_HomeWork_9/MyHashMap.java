@@ -1,18 +1,19 @@
 package GoIt_HomeWork_9;
 
-
 import java.util.Arrays;
 
-public class MyHashMap <K,V> {
+public class MyHashMap<K, V> {
     Node[] nodes;
     int size;
 
     int count;
+
     MyHashMap() {
         size = 8;
         nodes = new Node[size];
     }
-    static class Node <K,V> {
+
+    static class Node<K, V> {
         K key;
         V value;
         Node next;
@@ -39,14 +40,14 @@ public class MyHashMap <K,V> {
             count++;
         }
         Node currentValue = nodes[hashIndex];
-            if (currentValue.value.equals(value)) {
-            } else {
-                if (currentValue.next == null) {
-                    currentValue.next = new Node(key, value);
-                    count++;
-                } else
-                    currentValue = currentValue.next;
-            }
+        if (currentValue.value.equals(value)) {
+        } else {
+            if (currentValue.next == null) {
+                currentValue.next = new Node(key, value);
+                count++;
+            } else
+                currentValue = currentValue.next;
+        }
     }
 
     public V get(K key) {
@@ -54,15 +55,15 @@ public class MyHashMap <K,V> {
         if (getting == null) {
             return null;
         }
-            if (getting.key.equals(key)) {
-                return (V) getting.value;
+        if (getting.key.equals(key)) {
+            return (V) getting.value;
+        } else {
+            if (getting.next == null) {
+                return null;
             } else {
-                if (getting.next == null) {
-                    return null;
-                } else {
-                    getting = getting.next;
-                }
+                getting = getting.next;
             }
+        }
         return (V) key;
     }
 
@@ -76,17 +77,17 @@ public class MyHashMap <K,V> {
             count--;
             return removingNode.value;
         }
-            if (removingNode.next == null) {
-                return null;
-            }
-            if (removingNode.next.key.equals(key)) {
-                Object returningNodeValue =  removingNode.next.value;
-                removingNode.next = removingNode.next.next;
-                removingNode.next.next = null;
-                return returningNodeValue;
-            } else {
-                removingNode = removingNode.next;
-            }
+        if (removingNode.next == null) {
+            return null;
+        }
+        if (removingNode.next.key.equals(key)) {
+            Object returningNodeValue = removingNode.next.value;
+            removingNode.next = removingNode.next.next;
+            removingNode.next.next = null;
+            return returningNodeValue;
+        } else {
+            removingNode = removingNode.next;
+        }
         return key;
     }
 
@@ -94,7 +95,8 @@ public class MyHashMap <K,V> {
     public int size() {
         return count;
     }
-    public void clear(){
+
+    public void clear() {
         for (int i = 0; i < nodes.length; i++) {
             nodes[i] = null;
         }

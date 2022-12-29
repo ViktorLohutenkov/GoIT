@@ -4,7 +4,7 @@ public class MyArrayListTest {
 
 
     public static void main(String[] args) {
-        MyArrayList <String> listTests = new MyArrayList<> ();
+        MyArrayList<String> listTests = new MyArrayList<>();
 
         listTests.add("1");
         listTests.add("Viktor");

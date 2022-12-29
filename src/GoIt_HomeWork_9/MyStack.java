@@ -2,14 +2,14 @@ package GoIt_HomeWork_9;
 
 import java.util.Arrays;
 
-public class MyStack <E> {
-    private Object [] arrayStack;      // E
+public class MyStack<E> {
+    private Object[] arrayStack;
     private int top;
     private int capacity;
 
     public MyStack(int size) {
         capacity = size;
-        arrayStack = new Object[size];   // (E[])
+        arrayStack = new Object[size];
         top = -1;
     }
 
@@ -17,6 +17,7 @@ public class MyStack <E> {
 
         return top == -1;
     }
+
     public boolean isFull() {
 
         return top == capacity - 1;
@@ -27,9 +28,9 @@ public class MyStack <E> {
             System.out.println("The stack is full");
             return;
         }
-            top = top + 1;
-            arrayStack[top] = value;
-        }
+        top = top + 1;
+        arrayStack[top] = value;
+    }
 
     public E pop() {
         if (isEmpty()) {
@@ -46,8 +47,9 @@ public class MyStack <E> {
             System.out.println("The stack is empty");
             System.exit(-1);
         }
-            return arrayStack[top];
+        return arrayStack[top];
     }
+
     public int size() {
 
         return top + 1;
@@ -64,8 +66,8 @@ public class MyStack <E> {
             return null;
         } else {
             E removedElement = (E) arrayStack[index];
-            for(int i = index; i < capacity-1; i++){
-                arrayStack[i] = arrayStack[i+1];
+            for (int i = index; i < capacity - 1; i++) {
+                arrayStack[i] = arrayStack[i + 1];
             }
             capacity--;
             return removedElement;

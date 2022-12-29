@@ -2,7 +2,7 @@ package GoIt_HomeWork_9;
 
 public class MyLinkedListTest {
     public static void main(String[] args) {
-        MyLinkedList <Integer> list = new MyLinkedList<>();
+        MyLinkedList<Integer> list = new MyLinkedList<>();
 
         list.add(5);
         list.add(10);
