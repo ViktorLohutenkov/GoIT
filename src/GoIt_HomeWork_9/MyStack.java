@@ -2,14 +2,14 @@ package GoIt_HomeWork_9;
 
 import java.util.Arrays;
 
-public class MyStack {
-    private int[] arrayStack;
+public class MyStack <E> {
+    private Object [] arrayStack;      // E
     private int top;
     private int capacity;
 
     public MyStack(int size) {
         capacity = size;
-        arrayStack = new int[size];
+        arrayStack = new Object[size];   // (E[])
         top = -1;
     }
 
@@ -22,7 +22,7 @@ public class MyStack {
         return top == capacity - 1;
     }
 
-    public void push(int value) {
+    public void push(E value) {
         if (isFull()) {
             System.out.println("The stack is full");
             return;
@@ -31,17 +31,17 @@ public class MyStack {
             arrayStack[top] = value;
         }
 
-    public int pop() {
+    public E pop() {
         if (isEmpty()) {
             System.out.println("The stack is empty");
             System.exit(-1);
         }
         System.out.println("Removing " + peek());
-        return arrayStack[top--];
+        return (E) arrayStack[top--];
 
     }
 
-    public int peek() {
+    public Object peek() {
         if (isEmpty()) {
             System.out.println("The stack is empty");
             System.exit(-1);
@@ -55,15 +55,15 @@ public class MyStack {
 
     public void clear() {
 
-        arrayStack = new int[0];
+        arrayStack = new Object[0];
     }
 
-    public int remove(int index) {
+    public E remove(int index) {
         if (isEmpty()) {
             System.out.println("The stack is empty");
-            return 0;
+            return null;
         } else {
-            int removedElement = arrayStack[index];
+            E removedElement = (E) arrayStack[index];
             for(int i = index; i < capacity-1; i++){
                 arrayStack[i] = arrayStack[i+1];
             }
@@ -77,7 +77,6 @@ public class MyStack {
         return "MyStack " + Arrays.toString(arrayStack);
     }
 }
-
 
 
 

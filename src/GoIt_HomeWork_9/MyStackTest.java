@@ -2,7 +2,7 @@ package GoIt_HomeWork_9;
 
 public class MyStackTest {
     public static void main(String[] args) {
-        MyStack stack = new MyStack(5);
+        MyStack <Integer> stack = new MyStack<>(5);
 
         stack.push(10);
         stack.push(20);

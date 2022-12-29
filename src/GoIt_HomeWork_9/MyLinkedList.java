@@ -1,26 +1,28 @@
 package GoIt_HomeWork_9;
 
-public class MyLinkedList {
+public class MyLinkedList <E> {
 
-    private Node head;
-    private Node tail;
+    private Node <E> head;
+    private Node <E> tail;
     private int size;
 
     public MyLinkedList() {
+
         size = 0;
     }
-    private static class Node {
-         int element;
-         Node next;
-         Node prev;
+    private static class Node <E> {
+         E element;
+         Node <E> next;
+         Node <E> prev;
 
-        public Node(int value) {
+        public Node(E value) {
+
             this.element = value;
         }
     }
 
-    public void add(int value) {
-        Node newNode = new Node(value);
+    public void add(E value) {
+        Node <E> newNode = new Node<>(value);
         if (size == 0){
             head = tail = newNode;
         }else{
@@ -35,7 +37,7 @@ public class MyLinkedList {
         if (head == null){
             throw new IndexOutOfBoundsException("Empty");
         }
-        Node first = head;
+        Node <E> first = head;
         if (head.next == null){
             tail = null;
         }else {
@@ -48,7 +50,7 @@ public class MyLinkedList {
         if (tail == null){
             throw new IndexOutOfBoundsException("Empty");
         }
-        Node last = tail;
+        Node <E> last = tail;
         if (head.next == null){
             head = null;
         }else {
@@ -57,7 +59,7 @@ public class MyLinkedList {
         tail = tail.prev;
         size--;
     }
-    public int remove(int index) {
+    public Object remove(int index) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Error");
         }
@@ -66,7 +68,7 @@ public class MyLinkedList {
         } else if (index == size - 1) {
             removeLastNode();
         } else {
-            Node current = head;
+            Node <E> current = head;
             for (int i = 0; i < index; i++) {
                 current = current.next;
             }
@@ -86,14 +88,14 @@ public class MyLinkedList {
         return this.size;
     }
 
-    public int get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {          //
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Error");
         }
         if (index == size - 1){
             return  tail.element;
         }
-        Node result = head;
+        Node <E> result = head;
         for (int i = 0; i < index; i++) {
             result = result.next;
         }
@@ -105,15 +107,16 @@ public class MyLinkedList {
       Node node = this.head;
         StringBuilder builder= new StringBuilder("[ ");
         for (int i = 0; i < size; i++) {
-            builder = builder.append(node.element + " ");
+            builder = builder.append(node.element + ", ");
             node = node.next;
         }
         builder = builder.append("]");
         return builder.toString();
     }
 }
+
  /*
-public void remove(int index){
+     public Object remove(int index){
         Node current = head;
         while (current.element != index) {
             current = current.next;
@@ -130,4 +133,5 @@ public void remove(int index){
         size--;
         return current.element;
     }
- */
+
+*/

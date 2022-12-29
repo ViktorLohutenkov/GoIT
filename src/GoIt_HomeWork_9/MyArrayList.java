@@ -3,61 +3,61 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class MyArrayList  {
-   private String [] elements;
+public class MyArrayList <T> {
+   private T [] elements;
    private static final int DEFAULT_CAPACITY = 10;
    private int size;
 
     public MyArrayList(){
 
-        this.elements = new String[DEFAULT_CAPACITY];
+        this.elements = (T[]) new  Object[DEFAULT_CAPACITY];
     }
 
    public MyArrayList (int initialCapacity) {
        if (initialCapacity >= 0) {
-           this.elements = new String[initialCapacity];
+           this.elements = (T[]) new Object[initialCapacity];
        } else {
            throw new IllegalArgumentException("Error");
        }
    }
-    public void add(String element){
+    public void add(T element){
         resizeArr();
-        elements[size] = element;
+        elements[size] = (T) element;
         size++;
     }
     private void resizeArr(){
         if (elements.length == size){
-            String [] newArray = new String [elements.length *2];
+            Object [] newArray = new Object [elements.length *2];
             System.arraycopy(elements, 0, newArray,0, size);
-            elements = newArray;
+            elements = (T[]) newArray;
         }
     }
-    public Object remove(int index){
+    public T remove(int index){
         Objects.checkIndex(index, size);  // index < 0 || index >= length
-        String removedElement = elements [index];
+        T removedElement = (T) elements [index];
         System.arraycopy(elements, index+1, elements,index, size-index-1);
         size--;
         return removedElement;
     }
     public void clear(){
         size = 0;
-        elements = new String[DEFAULT_CAPACITY];
+        elements = (T[]) new Object[DEFAULT_CAPACITY];
     }
     public int size(){
 
         return size;
     }
 
-    public String get(int index){
+    public T get(int index){
         Objects.checkIndex(index,size);
-        return elements [index];
+        return (T) elements [index];
     }
 
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner(", ");
         for (int i = 0; i < size; i++) {
-            joiner.add(elements[i]);
+            joiner.add((CharSequence) elements[i]);
         }
         return "[" + joiner + "]";
     }

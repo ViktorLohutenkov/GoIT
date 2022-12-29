@@ -1,10 +1,9 @@
 package GoIt_HomeWork_9;
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
 
-public class MyQueue {
-    int[] myArray;
+public class MyQueue <E> {
+    E [] myArray;
     int capacity;
      int size;
      int head;
@@ -13,7 +12,7 @@ public class MyQueue {
     MyQueue(int maxSize) {
 
         this.capacity = maxSize;
-        myArray = new int[maxSize];
+        myArray = (E[]) new Object[maxSize];
         head = 0;
         tail = -1;
         size = 0;
@@ -27,7 +26,7 @@ public class MyQueue {
         return (size == capacity);
     }
 
-      public void add(int value){
+      public void add(E value){
            if (isFull()) {
                System.out.println("Empty");
                System.exit(-1);
@@ -44,12 +43,11 @@ public class MyQueue {
 
     public void clear(){
         for (int i = 0; i <= size; i++) {
-            myArray[i] = 0;
             capacity = 0;
             tail = 0;
         }
     }
-    public int peek() {
+    public E peek() {
         if (isEmpty())
         {
             System.out.println("Empty");
@@ -58,12 +56,12 @@ public class MyQueue {
         return myArray[head];
     }
 
-    public int poll(){
+    public E poll(){
         if (isEmpty()) {
             System.out.println("Empty");
             System.exit(-1);
         }
-        int arr = myArray[head];
+        E arr = myArray[head];
         System.out.println("Removing " + arr);
         head = (head + 1) % capacity;
         size--;

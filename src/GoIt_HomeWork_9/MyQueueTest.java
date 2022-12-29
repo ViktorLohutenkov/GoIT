@@ -2,7 +2,7 @@ package GoIt_HomeWork_9;
 
 public class MyQueueTest {
     public static void main(String[] args) {
-        MyQueue queue = new MyQueue(5);
+        MyQueue <Integer> queue = new MyQueue<>(5);
 
         queue.add(10);
         queue.add(20);

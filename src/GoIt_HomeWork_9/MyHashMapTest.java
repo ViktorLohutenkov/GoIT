@@ -2,7 +2,7 @@ package GoIt_HomeWork_9;
 
 public class MyHashMapTest {
     public static void main(String[] args) {
-        MyHashMap map = new MyHashMap();
+        MyHashMap <Integer, String> map = new MyHashMap<>();
         map.put(0,"Oleg");
         map.put(1,"Viktor");
         map.put(2,"Sergey");

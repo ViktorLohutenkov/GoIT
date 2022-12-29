@@ -3,7 +3,7 @@ package GoIt_HomeWork_9;
 
 import java.util.Arrays;
 
-public class MyHashMap {
+public class MyHashMap <K,V> {
     Node[] nodes;
     int size;
 
@@ -12,12 +12,12 @@ public class MyHashMap {
         size = 8;
         nodes = new Node[size];
     }
-    static class Node {
-        Object key;
-        Object value;
+    static class Node <K,V> {
+        K key;
+        V value;
         Node next;
 
-        Node(Object key, Object value) {
+        Node(K key, V value) {
             this.key = key;
             this.value = value;
             next = null;
@@ -32,7 +32,7 @@ public class MyHashMap {
     }
 
 
-    public void put(Object key, Object value) {
+    public void put(K key, V value) {
         int hashIndex = key.hashCode() % size;
         if (nodes[hashIndex] == null) {
             nodes[hashIndex] = new Node(key, value);
@@ -49,13 +49,13 @@ public class MyHashMap {
             }
     }
 
-    public Object get(Object key) {
+    public V get(K key) {
         Node getting = nodes[key.hashCode() % size];
         if (getting == null) {
             return null;
         }
             if (getting.key.equals(key)) {
-                return  getting.value;
+                return (V) getting.value;
             } else {
                 if (getting.next == null) {
                     return null;
@@ -63,10 +63,10 @@ public class MyHashMap {
                     getting = getting.next;
                 }
             }
-        return key;
+        return (V) key;
     }
 
-    public Object remove(Object key) {
+    public Object remove(K key) {
         Node removingNode = nodes[key.hashCode() % size];
         if (removingNode == null) {
             return null;
