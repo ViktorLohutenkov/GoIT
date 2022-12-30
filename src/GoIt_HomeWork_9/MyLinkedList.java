@@ -1,27 +1,19 @@
 package GoIt_HomeWork_9;
-
 public class MyLinkedList<E> {
-
     private Node<E> head;
     private Node<E> tail;
     private int size;
-
     public MyLinkedList() {
-
         size = 0;
     }
-
     private static class Node<E> {
         E element;
         Node<E> next;
         Node<E> prev;
-
-        public Node(E value) {
-
-            this.element = value;
+        public Node(E element) {
+            this.element = element;
         }
     }
-
     public void add(E value) {
         Node<E> newNode = new Node<>(value);
         if (size == 0) {
@@ -33,12 +25,10 @@ public class MyLinkedList<E> {
         }
         size++;
     }
-
     public void removeFirstNode() {
         if (head == null) {
             throw new IndexOutOfBoundsException("Empty");
         }
-        Node<E> first = head;
         if (head.next == null) {
             tail = null;
         } else {
@@ -47,12 +37,10 @@ public class MyLinkedList<E> {
         head = head.next;
         size--;
     }
-
     public void removeLastNode() {
         if (tail == null) {
             throw new IndexOutOfBoundsException("Empty");
         }
-        Node<E> last = tail;
         if (head.next == null) {
             head = null;
         } else {
@@ -61,17 +49,16 @@ public class MyLinkedList<E> {
         tail = tail.prev;
         size--;
     }
-
-    public Object remove(int index) {
+    public void remove(int index) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Error");
         }
+        Node<E> current = head;
         if (index == 0) {
             removeFirstNode();
         } else if (index == size - 1) {
             removeLastNode();
         } else {
-            Node<E> current = head;
             for (int i = 0; i < index; i++) {
                 current = current.next;
             }
@@ -79,20 +66,16 @@ public class MyLinkedList<E> {
             current.next.prev = current.prev;
             size--;
         }
-        return index;
     }
-
     public void clear() {
         head = tail = null;
         size = 0;
     }
-
     public int size() {
         return this.size;
     }
-
     public E get(int index) {
-        if (index < 0 || index >= size) {          //
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Error");
         }
         if (index == size - 1) {
@@ -104,13 +87,12 @@ public class MyLinkedList<E> {
         }
         return result.element;
     }
-
     @Override
     public String toString() {
         Node node = this.head;
         StringBuilder builder = new StringBuilder("[ ");
         for (int i = 0; i < size; i++) {
-            builder = builder.append(node.element + ", ");
+            builder = builder.append(node.element + " ");
             node = node.next;
         }
         builder = builder.append("]");

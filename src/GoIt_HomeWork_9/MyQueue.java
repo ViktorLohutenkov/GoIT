@@ -8,24 +8,21 @@ public class MyQueue<E> {
     int size;
     int head;
     int tail;
-
     MyQueue(int maxSize) {
-
         this.capacity = maxSize;
         myArray = (E[]) new Object[maxSize];
         head = 0;
         tail = -1;
         size = 0;
     }
-
     public boolean isEmpty() {
+
         return size == 0;
     }
-
     public boolean isFull() {
+
         return (size == capacity);
     }
-
     public void add(E value) {
         if (isFull()) {
             System.out.println("Empty");
@@ -36,18 +33,16 @@ public class MyQueue<E> {
         myArray[tail] = value;
         size++;
     }
-
     public int size() {
+
         return capacity;
     }
-
     public void clear() {
         for (int i = 0; i <= size; i++) {
             capacity = 0;
             tail = 0;
         }
     }
-
     public E peek() {
         if (isEmpty()) {
             System.out.println("Empty");
@@ -55,7 +50,6 @@ public class MyQueue<E> {
         }
         return myArray[head];
     }
-
     public E poll() {
         if (isEmpty()) {
             System.out.println("Empty");
@@ -67,7 +61,6 @@ public class MyQueue<E> {
         size--;
         return arr;
     }
-
     @Override
     public String toString() {
         return "MyQueue " + Arrays.toString(myArray);

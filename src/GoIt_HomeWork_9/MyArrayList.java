@@ -7,7 +7,6 @@ public class MyArrayList<T> {
     private T[] elements;
     private static final int DEFAULT_CAPACITY = 10;
     private int size;
-
     public MyArrayList() {
 
         this.elements = (T[]) new Object[DEFAULT_CAPACITY];
@@ -47,7 +46,6 @@ public class MyArrayList<T> {
         size = 0;
         elements = (T[]) new Object[DEFAULT_CAPACITY];
     }
-
     public int size() {
 
         return size;
