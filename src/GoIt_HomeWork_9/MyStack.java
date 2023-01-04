@@ -3,10 +3,10 @@ import java.util.Arrays;
 public class MyStack<E> {
     private Object[] arrayStack;
     private int top;
-    private int capacity;
+    private int maxCapacity;
     public MyStack(int size) {
-        capacity = size;
-        arrayStack = new Object[size];
+        maxCapacity = size;
+        arrayStack = new Object[maxCapacity];
         top = -1;
     }
     public boolean isEmpty() {
@@ -15,49 +15,41 @@ public class MyStack<E> {
     }
     public boolean isFull() {
 
-        return top == capacity - 1;
+        return top == maxCapacity - 1;
     }
     public void push(E value) {
         if (isFull()) {
-            System.out.println("The stack is full");
-            return;
+            throw new IndexOutOfBoundsException("The stack is full");
         }
-        top = top + 1;
-        arrayStack[top] = value;
+        arrayStack[++top] = value;
     }
     public E pop() {
         if (isEmpty()) {
-            System.out.println("The stack is empty");
-            System.exit(-1);
+            throw new IndexOutOfBoundsException("The stack is empty");
         }
-        System.out.println("Removing " + peek());
         return (E) arrayStack[top--];
-
     }
-    public Object peek() {
+    public E peek() {
         if (isEmpty()) {
-            System.out.println("The stack is empty");
-            System.exit(-1);
+            throw new IndexOutOfBoundsException("The stack is empty");
         }
-        return arrayStack[top];
+        return (E) arrayStack[top];
     }
     public int size() {
-
         return top + 1;
     }
     public void clear() {
-        arrayStack = new Object[0];
+        arrayStack = (E[]) new Object[0];
     }
     public E remove(int index) {
         if (isEmpty()) {
-            System.out.println("The stack is empty");
-            return null;
+            throw new IndexOutOfBoundsException("The stack is empty");
         } else {
             E removedElement = (E) arrayStack[index];
-            for (int i = index; i < capacity - 1; i++) {
+            for (int i = index; i < top; i++) {
                 arrayStack[i] = arrayStack[i + 1];
             }
-            capacity--;
+            top--;
             return removedElement;
         }
     }
@@ -66,7 +58,6 @@ public class MyStack<E> {
         return "MyStack " + Arrays.toString(arrayStack);
     }
 }
-
 
 
 

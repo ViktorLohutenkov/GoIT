@@ -1,9 +1,9 @@
 package GoIt_HomeWork_9;
 import java.util.Arrays;
 public class MyHashMap<K, V> {
-    Node[] nodes;
-    int size;
-    int count;
+    private Node[] nodes;
+    private int size;
+    private int count;
     MyHashMap() {
         size = 8;
         nodes = new Node[size];

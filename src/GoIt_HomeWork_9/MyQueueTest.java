@@ -12,9 +12,11 @@ public class MyQueueTest {
         System.out.println("First element " + queue.peek());
 
         System.out.println("poll() = " + queue.poll());
-        queue.clear();
+
         System.out.println(queue);
         System.out.println("Size - " + queue.size());
+        queue.clear();
+        System.out.println("queue = " + queue);
 
 
     }

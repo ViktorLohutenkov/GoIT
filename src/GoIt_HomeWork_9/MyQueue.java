@@ -3,11 +3,11 @@ package GoIt_HomeWork_9;
 import java.util.Arrays;
 
 public class MyQueue<E> {
-    E[] myArray;
-    int capacity;
-    int size;
-    int head;
-    int tail;
+   private E[] myArray;
+   private int capacity;
+   private int size;
+   private int head;
+   private int tail;
     MyQueue(int maxSize) {
         this.capacity = maxSize;
         myArray = (E[]) new Object[maxSize];
@@ -25,44 +25,38 @@ public class MyQueue<E> {
     }
     public void add(E value) {
         if (isFull()) {
-            System.out.println("Empty");
-            System.exit(-1);
+            throw new IndexOutOfBoundsException("Queue is full");
         }
-        System.out.println(value);
         tail = (tail + 1) % capacity;
         myArray[tail] = value;
         size++;
     }
     public int size() {
-
-        return capacity;
+        return size;
     }
     public void clear() {
-        for (int i = 0; i <= size; i++) {
-            capacity = 0;
-            tail = 0;
-        }
+        myArray = (E[]) new Object[0];
+
     }
     public E peek() {
         if (isEmpty()) {
-            System.out.println("Empty");
-            System.exit(-1);
+            throw new IndexOutOfBoundsException("Queue is empty");
         }
         return myArray[head];
     }
     public E poll() {
         if (isEmpty()) {
-            System.out.println("Empty");
-            System.exit(-1);
+            throw new IndexOutOfBoundsException("Queue is empty");
         }
         E arr = myArray[head];
-        System.out.println("Removing " + arr);
+        myArray[head] = null;
         head = (head + 1) % capacity;
         size--;
         return arr;
     }
     @Override
     public String toString() {
+
         return "MyQueue " + Arrays.toString(myArray);
     }
 }
