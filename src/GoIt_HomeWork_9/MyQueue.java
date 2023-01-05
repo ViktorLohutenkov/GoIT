@@ -25,11 +25,19 @@ public class MyQueue<E> {
     }
     public void add(E value) {
         if (isFull()) {
-            throw new IndexOutOfBoundsException("Queue is full");
+            increaseQueue();
         }
         tail = (tail + 1) % capacity;
         myArray[tail] = value;
         size++;
+    }
+    public void increaseQueue(){
+        E[] newStack = (E[]) new Object[capacity*2];
+        for(int i=0; i<capacity; i++){
+            newStack[i] = (E) myArray[i];
+        }
+        myArray = newStack;
+        capacity = capacity*2;
     }
     public int size() {
         return size;

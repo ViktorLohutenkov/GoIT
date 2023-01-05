@@ -1,53 +1,60 @@
 package GoIt_HomeWork_9;
+
 import java.util.Arrays;
-public class MyStack<E> {
-    private Object[] arrayStack;
+
+public class MyStack<T> {
+    private T[] stackArray;
+    private int stackSize;
     private int top;
-    private int maxCapacity;
     public MyStack(int size) {
-        maxCapacity = size;
-        arrayStack = new Object[maxCapacity];
-        top = -1;
+        this.stackSize = size;
+        this.stackArray = (T[]) new Object[stackSize];
+        this.top = -1;
     }
-    public boolean isEmpty() {
-
-        return top == -1;
+    public boolean isStackEmpty() {
+        return (top == -1);
     }
-    public boolean isFull() {
-
-        return top == maxCapacity - 1;
+    public boolean isStackFull() {
+        return (top == stackSize - 1);
     }
-    public void push(E value) {
-        if (isFull()) {
-            throw new IndexOutOfBoundsException("The stack is full");
+    public void push(T value) {
+        if (isStackFull()) {
+            increaseStack();
         }
-        arrayStack[++top] = value;
+        stackArray[++top] = value;
     }
-    public E pop() {
-        if (isEmpty()) {
+    private void increaseStack() {
+        T[] newStack = (T[]) new Object[stackSize * 2];
+        for (int i = 0; i < stackSize; i++) {
+            newStack[i] = stackArray[i];
+        }
+        stackArray = newStack;
+        stackSize = stackSize * 2;
+    }
+    public T pop() {
+        if (isStackEmpty()) {
             throw new IndexOutOfBoundsException("The stack is empty");
         }
-        return (E) arrayStack[top--];
+        T entry = stackArray[top--];
+        return entry;
     }
-    public E peek() {
-        if (isEmpty()) {
-            throw new IndexOutOfBoundsException("The stack is empty");
-        }
-        return (E) arrayStack[top];
+    public T peek() {
+        return stackArray[top];
     }
     public int size() {
+
         return top + 1;
     }
     public void clear() {
-        arrayStack = (E[]) new Object[0];
+        stackArray = (T[]) new Object[0];
     }
-    public E remove(int index) {
-        if (isEmpty()) {
+    public T remove(int index) {
+        if (isStackEmpty()) {
             throw new IndexOutOfBoundsException("The stack is empty");
         } else {
-            E removedElement = (E) arrayStack[index];
+            T removedElement = stackArray[index];
             for (int i = index; i < top; i++) {
-                arrayStack[i] = arrayStack[i + 1];
+                stackArray[i] = stackArray[i + 1];
             }
             top--;
             return removedElement;
@@ -55,9 +62,8 @@ public class MyStack<E> {
     }
     @Override
     public String toString() {
-        return "MyStack " + Arrays.toString(arrayStack);
+        return "MyStack " + Arrays.toString(stackArray);
     }
 }
-
 
 

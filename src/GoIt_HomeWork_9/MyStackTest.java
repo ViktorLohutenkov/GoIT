@@ -9,6 +9,8 @@ public class MyStackTest {
         stack.push(30);
         stack.push(40);
         stack.push(50);
+        stack.push(60);
+
         System.out.println(stack);
 
         System.out.println("Size - " + stack.size());
@@ -17,7 +19,7 @@ public class MyStackTest {
 
         stack.pop();
         stack.pop();
-        stack.pop();
+
         System.out.println("Size - " + stack.size());
 
         stack.remove(0);
@@ -25,11 +27,9 @@ public class MyStackTest {
         System.out.println("size = " + stack.size());
         System.out.println("stack = " + stack);
         stack.pop();
-        System.out.println("stack.isEmpty() = " + stack.isEmpty());
+        System.out.println("stack.isEmpty() = " + stack.isStackEmpty());
 
         stack.clear();
         System.out.println("Empty - " + stack);
-
-
     }
 }

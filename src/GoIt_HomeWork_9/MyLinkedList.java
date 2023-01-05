@@ -89,13 +89,13 @@ public class MyLinkedList<E> {
     }
     @Override
     public String toString() {
-        Node node = this.head;
+        Node <E> node = this.head;
         StringBuilder builder = new StringBuilder("[ ");
         for (int i = 0; i < size; i++) {
-            builder = builder.append(node.element + " ");
+            builder.append(node.element + " ");
             node = node.next;
         }
-        builder = builder.append("]");
+        builder.append("]");
         return builder.toString();
     }
 }
