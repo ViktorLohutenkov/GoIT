@@ -1,7 +1,5 @@
 package GoIt_HomeWork_9;
-
 import java.util.Arrays;
-
 public class MyStack<T> {
     private T[] stackArray;
     private int stackSize;
@@ -31,18 +29,18 @@ public class MyStack<T> {
         stackArray = newStack;
         stackSize = stackSize * 2;
     }
+    public T peek() {
+        return stackArray[top];
+    }
     public T pop() {
         if (isStackEmpty()) {
             throw new IndexOutOfBoundsException("The stack is empty");
         }
         T entry = stackArray[top--];
+        stackArray[top+1] = null;
         return entry;
     }
-    public T peek() {
-        return stackArray[top];
-    }
-    public int size() {
-
+     public int size() {
         return top + 1;
     }
     public void clear() {
@@ -53,7 +51,7 @@ public class MyStack<T> {
             throw new IndexOutOfBoundsException("The stack is empty");
         } else {
             T removedElement = stackArray[index];
-            for (int i = index; i < top; i++) {
+            for (int i = index; i < top + 1; i++) {
                 stackArray[i] = stackArray[i + 1];
             }
             top--;

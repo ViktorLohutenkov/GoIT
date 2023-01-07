@@ -1,7 +1,5 @@
 package GoIt_HomeWork_9;
-
 import java.util.Arrays;
-
 public class MyQueue<E> {
    private E[] myArray;
    private int capacity;
@@ -16,11 +14,9 @@ public class MyQueue<E> {
         size = 0;
     }
     public boolean isEmpty() {
-
         return size == 0;
     }
     public boolean isFull() {
-
         return (size == capacity);
     }
     public void add(E value) {
@@ -40,11 +36,11 @@ public class MyQueue<E> {
         capacity = capacity*2;
     }
     public int size() {
+
         return size;
     }
     public void clear() {
         myArray = (E[]) new Object[0];
-
     }
     public E peek() {
         if (isEmpty()) {
@@ -64,7 +60,6 @@ public class MyQueue<E> {
     }
     @Override
     public String toString() {
-
         return "MyQueue " + Arrays.toString(myArray);
     }
 }
