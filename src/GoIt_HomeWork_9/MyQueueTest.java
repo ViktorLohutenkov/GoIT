@@ -19,8 +19,6 @@ public class MyQueueTest {
         System.out.println("queue = " + queue);
         queue.add(40);
         queue.add(50);
-        queue.add(60);
-        queue.add(70);
         System.out.println("queue = " + queue);
 
 

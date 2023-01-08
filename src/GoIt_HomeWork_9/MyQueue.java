@@ -36,11 +36,12 @@ public class MyQueue<E> {
         capacity = capacity*2;
     }
     public int size() {
-
         return size;
     }
     public void clear() {
-        myArray = (E[]) new Object[capacity];
+        for (int i = 0; i < capacity; i++) {
+            myArray[i] = null;
+        }
     }
     public E peek() {
         if (isEmpty()) {
