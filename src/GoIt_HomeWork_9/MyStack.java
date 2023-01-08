@@ -44,7 +44,7 @@ public class MyStack<T> {
         return top + 1;
     }
     public void clear() {
-        stackArray = (T[]) new Object[0];
+        stackArray = (T[]) new Object[stackSize];
     }
     public T remove(int index) {
         if (isStackEmpty()) {

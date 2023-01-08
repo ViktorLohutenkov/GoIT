@@ -7,11 +7,13 @@ public class MyHashMapTest {
         map.put(1, "Viktor");
         map.put(2, "Sergey");
         map.put(3, "Hanna");
+
         System.out.println("map = " + map);
 
         System.out.println("map.get(1) = " + map.get(2));
 
         map.remove(3);
+        map.remove(1);
         System.out.println("map = " + map);
 
         System.out.println("map.size() = " + map.size());

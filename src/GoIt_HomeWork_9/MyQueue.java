@@ -40,7 +40,7 @@ public class MyQueue<E> {
         return size;
     }
     public void clear() {
-        myArray = (E[]) new Object[0];
+        myArray = (E[]) new Object[capacity];
     }
     public E peek() {
         if (isEmpty()) {

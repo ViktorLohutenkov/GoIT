@@ -26,5 +26,7 @@ public class MyStackTest {
 
         stack.clear();
         System.out.println("Empty - " + stack);
+        stack.push(50);
+        System.out.println("stack = " + stack);
     }
 }
