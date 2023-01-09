@@ -26,7 +26,12 @@ public class MyStackTest {
 
         stack.clear();
         System.out.println("Empty - " + stack);
+
         stack.push(50);
+        stack.push(60);
+        System.out.println("stack = " + stack);
+        System.out.println("stack.peek() = " + stack.peek());
+        stack.pop();
         System.out.println("stack = " + stack);
     }
 }

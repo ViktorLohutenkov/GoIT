@@ -39,10 +39,11 @@ public class MyQueue<E> {
         return size;
     }
     public void clear() {
-        for (int i = 0; i < capacity; i++) {
-            myArray[i] = null;
+        myArray = (E[]) new Object[capacity];
+        head = 0;
+        tail = -1;
+        size = 0;
         }
-    }
     public E peek() {
         if (isEmpty()) {
             throw new IndexOutOfBoundsException("Queue is empty");

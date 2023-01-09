@@ -22,12 +22,10 @@ public class MyStack<T> {
         stackArray[++top] = value;
     }
     private void increaseStack() {
-        T[] newStack = (T[]) new Object[stackSize * 2];
         for (int i = 0; i < stackSize; i++) {
-            newStack[i] = stackArray[i];
+            stackArray[i] = null;
+            stackSize = 0;
         }
-        stackArray = newStack;
-        stackSize = stackSize * 2;
     }
     public T peek() {
         return stackArray[top];
@@ -44,10 +42,10 @@ public class MyStack<T> {
         return top + 1;
     }
     public void clear() {
-        for (int i = 0; i < stackSize; i++) {
-            stackArray[i] = null;
+        stackArray = (T[]) new Object[stackSize];
+        stackSize = 0;
+        top = -1;
         }
-    }
     public T remove(int index) {
         if (isStackEmpty()) {
             throw new IndexOutOfBoundsException("The stack is empty");

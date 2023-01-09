@@ -15,12 +15,14 @@ public class MyQueueTest {
         queue.poll();
         System.out.println(queue);
         System.out.println("Size - " + queue.size());
+
         queue.clear();
         System.out.println("queue = " + queue);
+
         queue.add(40);
         queue.add(50);
         System.out.println("queue = " + queue);
-
-
+        queue.poll();
+        System.out.println("queue = " + queue);
     }
 }
