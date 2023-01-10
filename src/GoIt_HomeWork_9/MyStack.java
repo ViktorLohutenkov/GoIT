@@ -2,30 +2,24 @@ package GoIt_HomeWork_9;
 import java.util.Arrays;
 public class MyStack<T> {
     private T[] stackArray;
-    private int stackSize;
+    private int stackSize = 5;
     private int top;
-    public MyStack(int size) {
-        this.stackSize = size;
+    public MyStack() {
         this.stackArray = (T[]) new Object[stackSize];
         this.top = -1;
     }
     public boolean isStackEmpty() {
         return (top == -1);
     }
-    public boolean isStackFull() {
-        return (top == stackSize - 1);
-    }
     public void push(T value) {
-        if (isStackFull()) {
+        if (top == stackSize - 1) {
             increaseStack();
         }
         stackArray[++top] = value;
     }
     private void increaseStack() {
-        for (int i = 0; i < stackSize; i++) {
-            stackArray[i] = null;
-            stackSize = 0;
-        }
+        int newCapacity = stackArray.length * 2;
+        stackArray = Arrays.copyOf(stackArray, newCapacity);
     }
     public T peek() {
         return stackArray[top];
@@ -43,7 +37,6 @@ public class MyStack<T> {
     }
     public void clear() {
         stackArray = (T[]) new Object[stackSize];
-        stackSize = 0;
         top = -1;
         }
     public T remove(int index) {

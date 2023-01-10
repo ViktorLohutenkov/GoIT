@@ -28,11 +28,11 @@ public class MyQueue<E> {
         size++;
     }
     public void increaseQueue(){
-        E[] newStack = (E[]) new Object[capacity*2];
+        E[] newQueue = (E[]) new Object[capacity*2];
         for(int i=0; i<capacity; i++){
-            newStack[i] = (E) myArray[i];
+            newQueue[i] = (E) myArray[i];
         }
-        myArray = newStack;
+        myArray = newQueue;
         capacity = capacity*2;
     }
     public int size() {
