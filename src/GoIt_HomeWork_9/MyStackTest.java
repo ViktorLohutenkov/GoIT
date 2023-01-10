@@ -33,6 +33,11 @@ public class MyStackTest {
         stack.push(80);
         stack.push(90);
         stack.push(100);
+        stack.push(100);
+        stack.push(100);
+        stack.push(100);
+        stack.push(100);
+        stack.push(100);
         System.out.println("stack = " + stack);
         System.out.println("stack.peek() = " + stack.peek());
 

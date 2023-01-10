@@ -17,9 +17,13 @@ public class MyStack<T> {
         }
         stackArray[++top] = value;
     }
-    private void increaseStack() {
-        int newCapacity = stackArray.length * 2;
-        stackArray = Arrays.copyOf(stackArray, newCapacity);
+    private void increaseStack(){
+        T[] newStack = (T[]) new Object[stackSize*2];
+        for(int i=0; i<stackSize; i++){
+            newStack[i] = stackArray[i];
+        }
+        stackArray = newStack;
+        stackSize = stackSize*2;
     }
     public T peek() {
         return stackArray[top];
