@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 public class CheckValidPhoneNumber {
     public static void main(String[] args) throws IOException {
         File file = new File("file");
@@ -23,7 +22,3 @@ public class CheckValidPhoneNumber {
         scan.close();
     }
 }
-
-  //  \(\d{3}\)\s\d{3}-?\d{4}    -  (123) 456-7890
-  //  (?:\d{3}-){2}\d{4}         -   987-123-4567
-
