@@ -20,9 +20,9 @@ public class FrequencyWords {
                 }
             }
         }
-        scan.close();
         for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
             System.out.println(entry.getKey()+ " " + entry.getValue());
         }
+        scan.close();
     }
 }
