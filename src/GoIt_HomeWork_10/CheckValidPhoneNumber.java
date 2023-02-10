@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 public class CheckValidPhoneNumber {
     public static void main(String[] args) throws IOException {
         File file = new File("file.txt");
-        System.out.println(file.exists());
         Scanner scan = new Scanner(file);
        while(scan.hasNextLine()) {
            String line = scan.nextLine();

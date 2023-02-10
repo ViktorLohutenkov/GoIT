@@ -50,5 +50,6 @@ public class MyStackTest {
         stack.push(10);
         stack.push(10);
         System.out.println("stack = " + stack);
+        System.out.println("stack.size() = " + stack.size());
     }
 }

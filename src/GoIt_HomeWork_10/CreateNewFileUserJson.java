@@ -12,25 +12,19 @@ public class CreateNewFileUserJson {
         BufferedReader reader = new BufferedReader(new FileReader("file1.txt"));
         reader.readLine();
         String line;
-        boolean firstLine = true;
         while ((line = reader.readLine()) != null) {
-            if (firstLine) {
-                firstLine = false;
-            }
             String[] names = line.split(" ");
-              users.add(new User(names [0],Integer.parseInt(names [1])));
-
-               Gson gson = new GsonBuilder().setPrettyPrinting().create();
-               FileWriter fileWriter = new FileWriter("user.json");
-               gson.toJson(users, fileWriter);
-               fileWriter.close();
+            users.add(new User(names [0],Integer.parseInt(names [1])));
         }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        FileWriter fileWriter = new FileWriter("user.json");
+        gson.toJson(users, fileWriter);
+        fileWriter.close();
     }
 }
     class User {
         public String name;
         public int age;
-
         public User(String name, int age) {
             this.name = name;
             this.age = age;
