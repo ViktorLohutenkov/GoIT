@@ -1,10 +1,6 @@
 package GoIt_HomeWork_11;
 
-
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,7 +14,7 @@ public class ArrayReturnSort {
       return Stream.of(numbers)
                 .map(nums -> nums.split(", "))
                 .flatMap(Arrays::stream)
-                .sorted(Comparator.comparingInt(Integer::parseInt))
+                .sorted()
                 .collect(Collectors.joining(", "));
     }
 }
