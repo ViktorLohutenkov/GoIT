@@ -15,7 +15,7 @@ public class ReturnListNames {
     public static List<String> oddIndexList(List<String> names) {
         return IntStream.range(0, names.size())
                 .filter(index -> index % 2 == 1)
-                .mapToObj(names::get)
+                .mapToObj(index -> index + "." + names.get(index))
                 .collect(Collectors.toList());
     }
     private static List<String> sortedNamesToUpperCase(List<String> names) {
