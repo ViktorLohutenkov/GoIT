@@ -1,22 +1,18 @@
 package GoIt_HomeWork_12;
-
 public class ThreadTime {
-            static final Object lock = new Object();
             public static void main(String[] args) throws InterruptedException {
 
-                Worker worker = new Worker();
-                Thread clocker = new Thread(new Clock(worker));
-                Thread messager = new Thread(new Messanger(worker));
-                clocker.start();
-                messager.start();
+                MessageTest messageTest = new MessageTest();
+                Thread clock = new Thread(new Clock(messageTest));
+                Thread message = new Thread(new Message(messageTest));
+                clock.start();
+                message.start();
             }
         }
-
-        class Worker {
+        class MessageTest {
             int minutes = 0;
             int seconds = 0;
-            public void clock() {
-                synchronized (ThreadTime.lock) {
+            public synchronized void clock() {
                     System.out.println(minutes + ":" + seconds);
                     try {
                         Thread.sleep(1000);
@@ -24,26 +20,25 @@ public class ThreadTime {
                         throw new RuntimeException(e);
                     }
                     seconds++;
-                    if (seconds == 60) {
-                          seconds = 0;
-                        minutes++;
-                    }
+                  if (seconds == 60) {
+                        seconds = 0;
+                      minutes++;
+                  }
                     while (seconds % 5 == 0) {
                         try {
                             System.out.println(minutes + ":" + seconds);
-                            ThreadTime.lock.wait();
+                            wait();
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
                         }
                     }
-                    ThreadTime.lock.notifyAll();
+                    notifyAll();
                 }
-            }
+
             public synchronized void message() {
-                synchronized (ThreadTime.lock) {
                    while (seconds % 5 != 0) {
                        try {
-                           ThreadTime.lock.wait();
+                           wait();
                        } catch (InterruptedException e) {
                            throw new RuntimeException(e);
                        }
@@ -51,59 +46,35 @@ public class ThreadTime {
                    seconds++;
                     System.out.println("Прошло 5 секунд");
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                    ThreadTime.lock.notifyAll();
+                    notifyAll();
                 }
             }
-        }
-/*
-public synchronized void fizz() {
-        while (number.get() <= n) {
-            if (number.get() % 3 == 0 && number.get() % 5 != 0) {
-                queue.add("fizz");
-                number.incrementAndGet();
-                notifyAll();
-            } else {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+      class Clock implements Runnable {
+            MessageTest messageTest;
+            public Clock(MessageTest messageTest) {
+
+                this.messageTest = messageTest;
             }
-        }
-    }
- */
-
-        class Clock implements Runnable {
-            Worker worker;
-
-            public Clock(Worker worker) {
-
-                this.worker = worker;
-            }
-
             @Override
             public void run() {
                 while (true) {
-                    worker.clock();
+                    messageTest.clock();
                 }
             }
         }
-
-        class Messanger implements Runnable {
-            Worker worker;
-
-            public Messanger(Worker worker) {
-                this.worker = worker;
+        class Message implements Runnable {
+            MessageTest messageTest;
+            public Message(MessageTest messageTest) {
+                this.messageTest = messageTest;
             }
-
             @Override
             public void run() {
                 while (true) {
-                    worker.message();
+                    messageTest.message();
                 }
             }
         }
