@@ -1,8 +1,7 @@
 package GoIt_HomeWork_12;
 
 public class ThreadTime {
-            static Object lock = new Object();
-
+            static final Object lock = new Object();
             public static void main(String[] args) throws InterruptedException {
 
                 Worker worker = new Worker();
@@ -37,10 +36,10 @@ public class ThreadTime {
                             throw new RuntimeException(e);
                         }
                     }
-                    ThreadTime.lock.notify();
+                    ThreadTime.lock.notifyAll();
                 }
             }
-            public void message() {
+            public synchronized void message() {
                 synchronized (ThreadTime.lock) {
                    while (seconds % 5 != 0) {
                        try {
@@ -56,15 +55,33 @@ public class ThreadTime {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                    ThreadTime.lock.notify();
+                    ThreadTime.lock.notifyAll();
                 }
             }
         }
+/*
+public synchronized void fizz() {
+        while (number.get() <= n) {
+            if (number.get() % 3 == 0 && number.get() % 5 != 0) {
+                queue.add("fizz");
+                number.incrementAndGet();
+                notifyAll();
+            } else {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+ */
 
         class Clock implements Runnable {
             Worker worker;
 
             public Clock(Worker worker) {
+
                 this.worker = worker;
             }
 
