@@ -1,5 +1,5 @@
 package GoIt_HomeWork_12;
-public class ThreadTime {
+public class DataOnTime {
             public static void main(String[] args) throws InterruptedException {
 
                 MessageTest messageTest = new MessageTest();
