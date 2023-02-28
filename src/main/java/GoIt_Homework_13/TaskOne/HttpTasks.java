@@ -1,6 +1,7 @@
-package main.java.GoIt_Homework_13;
+package main.java.GoIt_Homework_13.TaskOne;
 
 import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;

@@ -1,7 +1,6 @@
-package main.java.GoIt_Homework_13;
+package main.java.GoIt_Homework_13.TaskOne;
 
 import java.io.IOException;
-
 public class MyHttpTest {
     public static void main(String[] args) throws IOException, InterruptedException {
         User user = defaultUser();
