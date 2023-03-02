@@ -13,13 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 public class TodosUser {
     HttpClient client = HttpClient.newHttpClient();
-    public void createJsonWithAllOpenToDosByUserId(int userId) throws IOException, InterruptedException {
-        String allTodosJson = getAllTodosByUserId(userId);
-        List<UserTodos> allTodos = getOpenTodosFromJson(allTodosJson);
-        String jsonFilePath = "src/main/resources/" + "user-" + userId + "-open_todos.json";
-        createJsonWithTodos(allTodos, jsonFilePath);
-        System.out.println("JSON filepath: " + jsonFilePath);
-    }
     private String getAllTodosByUserId(int userId) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://jsonplaceholder.typicode.com/users/" + userId + "/todos"))
@@ -48,5 +41,12 @@ public class TodosUser {
         } catch (IOException e) {
             e.getStackTrace();
         }
+    }
+    public void createJsonWithAllOpenToDosByUserId(int userId) throws IOException, InterruptedException {
+        String allTodosJson = getAllTodosByUserId(userId);
+        List<UserTodos> allTodos = getOpenTodosFromJson(allTodosJson);
+        String jsonFilePath = "src/main/resources/" + "user-" + userId + "-open_todos.json";
+        createJsonWithTodos(allTodos, jsonFilePath);
+        System.out.println("JSON filepath: " + jsonFilePath);
     }
 }

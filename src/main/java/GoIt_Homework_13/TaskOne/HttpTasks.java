@@ -7,10 +7,11 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+
 public class HttpTasks {
    private static final HttpClient CLIENT = HttpClient.newHttpClient();
-   private static final Gson GSON = new Gson();
     public static User createUser(User user) throws IOException, InterruptedException {
+        Gson GSON = new Gson();
         final String requestBody = GSON.toJson(user);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://jsonplaceholder.typicode.com/users"))
@@ -20,13 +21,13 @@ public class HttpTasks {
         HttpResponse <String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
         return GSON.fromJson(response.body(), User.class);
     }
-    public static int updateUserById(int userId) throws IOException, InterruptedException {
+    public static String updateUserById(int userId) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://jsonplaceholder.typicode.com/users/" + userId))
-                .PUT(HttpRequest.BodyPublishers.noBody())
+                .PUT(HttpRequest.BodyPublishers.ofString("user"))
                 .build();
         HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
-        return response.statusCode();
+        return response.body();
     }
     public static int deleteUserById(int id) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()

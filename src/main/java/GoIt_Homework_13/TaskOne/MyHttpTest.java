@@ -31,12 +31,7 @@ public class MyHttpTest {
         System.out.println(userName + " info - " + userUsername);
     }
     private static User defaultUser(){
-        User user = new User();
-        user.setId(11);
-        user.setName("Alex");
-        user.setUsername("HttpAlex");
-        user.setEmail("httpalex@gmail.com");
-        user.setPhone("380991112233");
-        return user;
+        return new User(11,"Alex","HttpAlex","httpalex@gmail.com", "Kyiv",
+                "380991112233","www.edu.goit", "Philip Morris");
     }
 }
