@@ -4,14 +4,16 @@ import java.io.IOException;
 public class MyHttpTest {
     public static void main(String[] args) throws IOException, InterruptedException {
         User user = defaultUser();
-
+        String jsonUserUpdated = "src/main/resources/updated_user_JPH.json";
         //1
         final User createUser = HttpTasks.createUser(user);
         System.out.println(createUser);
 
         //2
-        int userId = 5;
-        System.out.println("Status - " + HttpTasks.updateUserById(userId));
+        int updatedId = 5;
+        String updatedUser = HttpTasks.updateUser(updatedId, jsonUserUpdated);
+        System.out.println(updatedUser);
+
 
         //3
         int deleteUserId = 2;

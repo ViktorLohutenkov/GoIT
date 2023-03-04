@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Paths;
 
 public class HttpTasks {
    private static final HttpClient CLIENT = HttpClient.newHttpClient();
@@ -21,10 +22,10 @@ public class HttpTasks {
         HttpResponse <String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
         return GSON.fromJson(response.body(), User.class);
     }
-    public static String updateUserById(int userId) throws IOException, InterruptedException {
+    public static String updateUser(int id, String user) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://jsonplaceholder.typicode.com/users/" + userId))
-                .PUT(HttpRequest.BodyPublishers.ofString("user"))
+                .uri(URI.create("https://jsonplaceholder.typicode.com/users/" + id))
+                .PUT(HttpRequest.BodyPublishers.ofFile(Paths.get(user)))
                 .build();
         HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
