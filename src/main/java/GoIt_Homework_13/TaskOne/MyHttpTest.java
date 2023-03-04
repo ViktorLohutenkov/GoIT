@@ -4,7 +4,7 @@ import java.io.IOException;
 public class MyHttpTest {
     public static void main(String[] args) throws IOException, InterruptedException {
         User user = defaultUser();
-        String jsonUserUpdated = "src/main/resources/updated_user_JPH.json";
+        String jsonUserUpdated = "src/main/resources/userJSON.json";
         //1
         final User createUser = HttpTasks.createUser(user);
         System.out.println(createUser);
